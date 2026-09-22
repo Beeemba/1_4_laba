@@ -31,7 +31,7 @@ void printMatrix(int** matrix, int rows, int cols, bool showBorders = true, std:
     if (showBorders)
     {
         std::cout << "*";
-        for (int j = 0; j < cols * 6 + (cols - 1);j++)
+        for (int j = 0; j < cols * 6 + 2;j++)
         {
             std::cout << "-";
         }
@@ -49,12 +49,12 @@ void printMatrix(int** matrix, int rows, int cols, bool showBorders = true, std:
             std::cout << std::setw(4) << matrix[i][j];
             if (j < cols - 1)
             {
-                std::cout << " ";
+                std::cout << "  ";
             }
         }
         if (showBorders)
         {
-            std::cout << " |";
+            std::cout << "   |";
         }
         std::cout << "\n";
     }
@@ -62,7 +62,7 @@ void printMatrix(int** matrix, int rows, int cols, bool showBorders = true, std:
     if (showBorders)
     {
         std::cout << "*";
-        for (int j = 0; j < cols * 6 + (cols-1); j++)
+        for (int j = 0; j < cols * 6 + 2; j++)
         {
             std::cout << "-";
         }
