@@ -2,6 +2,13 @@
 #include <string>
 #include <iomanip>
 
+/**
+ * @brief Выделяет память под двумерный массив (матрицу)
+ * @param rows Количество строк
+ * @param cols Количество столбцов
+ * @return Указатель на указатель (int**) - матрица
+ * @note Все элементы инициализируются нулями
+ */
 int** allocateMatrix(int rows, int cols)
 {
     int** matrix = new int*[rows];
@@ -12,6 +19,12 @@ int** allocateMatrix(int rows, int cols)
     return matrix;
 }
 
+/**
+ * @brief Заполняет матрицу значениями с клавиатуры
+ * @param matrix Указатель на матрицу
+ * @param rows Количество строк
+ * @param cols Количество столбцов
+ */
 void fillMatrix(int** matrix, int rows, int cols)
 {
     std::cout << "Введите элементы матрицы (" << rows << "x" << cols << "):\n";
@@ -25,6 +38,15 @@ void fillMatrix(int** matrix, int rows, int cols)
     }
 }
 
+/**
+ * @brief Выводит матрицу на экран с форматированием
+ * @param matrix Указатель на матрицу
+ * @param rows Количество строк
+ * @param cols Количество столбцов
+ * @param showBorders Показывать рамки (по умолчанию true)
+ * @param title Заголовок матрицы (по умолчанию "Matrix")
+ * @note Если showBorders=true, рисует рамку из символов * и -
+ */
 void printMatrix(int** matrix, int rows, int cols, bool showBorders = true, std::string title = "Matrix")
 {
     std::cout << "\n=== " << title << " ===\n";
@@ -70,6 +92,12 @@ void printMatrix(int** matrix, int rows, int cols, bool showBorders = true, std:
     }
 }
 
+/**
+ * @brief Освобождает память, выделенную под матрицу
+ * @param matrix Указатель на матрицу
+ * @param rows Количество строк
+ * @note Сначала удаляет строки, потом массив указателей
+ */
 void freeMatrix(int** matrix, int rows)
 {
     for (int i = 0; i < rows; i++)
@@ -88,6 +116,7 @@ int main()
     std::cin >> cols;
     int** grades = allocateMatrix(rows,cols);
     fillMatrix(grades, rows, cols);
+    
     printMatrix(grades, rows, cols);
     printMatrix(grades, rows, cols, true, "Оценки студентов");
     printMatrix(grades, rows, cols, false, "Матрица оценок (без рамок)");
